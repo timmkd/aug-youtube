@@ -13,6 +13,7 @@ If I were continuing, considerations would be made to:
 - Move api credentials to separate file for when API requests run out
 - Spend time fixing animation jumps when switching between sections
 - Error handling for invalid API calls
+- Look into responsive image srcsets
 
 # Create React App Notes:
 
