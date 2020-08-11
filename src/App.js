@@ -30,7 +30,7 @@ class App extends Component {
     const script = document.createElement("script");
 
     gapi.load('client', () => {
-      gapi.client.setApiKey('AIzaSyApsyBjXaygVU_3TaRuaCwy1Q-nmC_AjPM');
+      gapi.client.setApiKey('AIzaSyAHDxNXjica0dmwPE_NdP3VsROfgT3yRSE');
       gapi.client.load('youtube', 'v3', () => {
         this.setState({ gapiReady: true });
       });
@@ -49,7 +49,7 @@ class App extends Component {
             <Player />
             <Search/>
             <Videos />
-            <p className="footer">Built by Tim McDonald for August Testing.</p>
+            <p className="footer">Built by Tim McDonald for the August Practical Exercise.</p>
           </ScrollableContent>
         </Provider>
       );
