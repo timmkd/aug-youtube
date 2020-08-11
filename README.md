@@ -9,6 +9,7 @@ If I were continuing, considerations would be made to:
 - Avoid too many requests by caching the data when switching between sections
 - Make elements focusable for keyboard tabbing
 - Load video title below selected video
+- Add an option to 'favourite' the currently selected video
 - Add PropType validation and ESlint for such
 - Move api credentials to separate file for when API requests run out
 - Spend time fixing animation jumps when switching between sections
