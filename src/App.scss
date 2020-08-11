@@ -1,6 +1,7 @@
 @import 'style/variables';
 @import 'style/functions';
 @import 'style/reset';
+@import 'style/animations';
 
 @import 'style/components/app';
 @import 'style/components/nav';
@@ -10,3 +11,4 @@
 @import 'style/components/player';
 @import 'style/components/header';
 @import 'style/components/footer';
+@import 'style/components/loader';

@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'class-names';
-import { getVideosById, setActiveSection, searchVideos } from '../redux/actions'
+import { getVideosById, setActiveSection, searchVideos, setPlayerId } from '../redux/actions'
 
 class Navigation extends Component {
   handleClickSearch() {
-    const { keyword, setActiveSection, searchVideos } = this.props;
+    const { keyword, setActiveSection, searchVideos, setPlayerId } = this.props;
     searchVideos(keyword);
     setActiveSection('search');
+    setPlayerId(null);
   }
 
   handleClickFavourites() {
-    const { getVideosById, setActiveSection, favourites } = this.props;
+    const { getVideosById, setActiveSection, favourites, setPlayerId } = this.props;
     getVideosById(favourites);
     setActiveSection('favourites');
+    setPlayerId(null);
   }
 
   handleClickHistory() {
-    const { getVideosById, setActiveSection, history } = this.props;
+    const { getVideosById, setActiveSection, history, setPlayerId } = this.props;
     getVideosById(history);
     setActiveSection('history');
+    setPlayerId(null);
   }
   
   render() {
@@ -59,7 +62,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getVideosById,
   setActiveSection,
-  searchVideos
+  searchVideos,
+  setPlayerId
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

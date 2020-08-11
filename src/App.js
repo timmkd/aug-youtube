@@ -8,6 +8,8 @@ import Player from './components/Player';
 import Navigation from './components/Navigation';
 import Search from './components/Search';
 import Header from './components/Header';
+import Loader from './components/Loader';
+import ScrollableContent from './components/ScrollableContent';
 
 
 class App extends Component {
@@ -28,7 +30,7 @@ class App extends Component {
     const script = document.createElement("script");
 
     gapi.load('client', () => {
-      gapi.client.setApiKey('AIzaSyCY2j7B2h6GwmCriUYsWuhLC3-zRmEoQiM');
+      gapi.client.setApiKey('AIzaSyApsyBjXaygVU_3TaRuaCwy1Q-nmC_AjPM');
       gapi.client.load('youtube', 'v3', () => {
         this.setState({ gapiReady: true });
       });
@@ -42,19 +44,19 @@ class App extends Component {
       return (
         <Provider store={store}>
           <Header/>
-          <Player />
           <Navigation/>
-          <div className="app__scrolling-content">
+          <ScrollableContent>
+            <Player />
             <Search/>
             <Videos />
-            <p class="footer">Built by Tim McDonald for August Testing.</p>
-          </div>
+            <p className="footer">Built by Tim McDonald for August Testing.</p>
+          </ScrollableContent>
         </Provider>
       );
     };
 
     return (
-      <p>Gapi not yet loaded</p>
+      <Loader />
     )
   }
 }

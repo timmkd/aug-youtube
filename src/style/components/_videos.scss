@@ -9,4 +9,10 @@
     display: flex;
     flex-wrap: wrap;
   }
+
+  &__empty{
+    text-align: center;
+    margin: 0 20px 50px;
+    font-size: 18px;
+  }
 }

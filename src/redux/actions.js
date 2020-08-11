@@ -63,27 +63,33 @@ export const getVideosById = (ids) => (dispatch) => {
   console.log(ids);
   console.log('using gapi to get a list of items');
 
-  dispatch({
-    type: 'SET_TO_LOADING'
-  });
-  gapi.client.youtube.videos.list({
-    "part": [
-      "snippet"
-    ],
-    "id": [...ids]
-  })
-  .then(function(response) {
-    // Handle the results here (response.result has the parsed body).
-    console.log('Response', response); 
+  if (ids.length) {
     dispatch({
-      type: 'RECEIVE_VIDEOS',
-      videos: response.result.items
+      type: 'SET_TO_LOADING'
     });
+    gapi.client.youtube.videos.list({
+      "part": [
+        "snippet"
+      ],
+      "id": [...ids]
+    })
+      .then(function (response) {
+        // Handle the results here (response.result has the parsed body).
+        console.log('Response', response);
+        dispatch({
+          type: 'RECEIVE_VIDEOS',
+          videos: response.result.items
+        });
+        dispatch({
+          type: 'SET_NOT_LOADING'
+        });
+      },
+        function (err) { console.error('Execute error', err); });
+  } else {
     dispatch({
-      type: 'SET_NOT_LOADING'
+      type: 'CLEAR_VIDEOS'
     });
-  },
-  function (err) { console.error('Execute error', err); });
+  }
 };
 
 export const addVideoToStorage = (id, storageLocation = 'history') => (dispatch) => {

@@ -1,0 +1,193 @@
+@keyframes marginTopDrop {
+  0% {
+    transform: translateY(0);
+  }
+
+  60% {
+    transform: translateY(2px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20%, 0)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0)
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(20%, 0, 0)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0)
+  }
+}
+
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes flip {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+@keyframes flipback {
+  0% {
+    transform: rotate(-180deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes bulge {
+  0% {
+    transform: scale(1);
+  }
+
+  60% {
+    transform: scale(1.4);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes miniBulge {
+  0% {
+    transform: scale(1);
+  }
+
+  60% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes inverseBulge {
+  0% {
+    transform: scale(1);
+  }
+
+  40% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+// this is so that the animation can be repeated on a class change
+@keyframes inverseBulgeRepeated {
+  0% {
+    transform: scale(1);
+  }
+
+  40% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation-duration: 2s;
+  animation-name: fadeIn;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up {
+  animation-duration: 2s;
+  animation-name: fadeInUp;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-left {
+  animation-duration: 2s;
+  animation-name: fadeInLeft;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+.animate-half-second {
+  animation-duration: .5s;
+}
+
+@for $i from 0 through 100 {
+  .animate-quicker-delay-#{$i} {
+    animation-delay: $i * .02s;
+  }
+  .animate-quick-delay-#{$i} {
+    animation-delay: $i * .05s;
+  }
+  .animate-delay-#{$i} {
+    animation-delay: $i * .1s;
+  }
+  .animate-longer-delay-#{$i} {
+    animation-delay: $i * .1s + 2;
+  }
+}
+
+
+@keyframes load-spin {
+  0%, 100% {
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+  }
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(1800deg);
+    animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+  }
+  100% {
+    transform: rotateY(3600deg);
+  }
+}

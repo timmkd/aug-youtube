@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import classNames from 'class-names';
 import { setPlayerId, addVideoToStorage, removeVideoFromStorage } from '../redux/actions';
 import IconStar from './IconStar';
 import IconStarEmpty from './IconStarEmpty';
+import Loader from './Loader';
 
 class Videos extends Component {
   // handlers
@@ -50,36 +52,52 @@ class Videos extends Component {
   }
 
   render() {
-    const { videos, favourites } = this.props;
-    return (
-      <ul className="videos">
-        {videos.map(video => {
-          const videoContent = video.snippet;
-          const id = video.id.videoId || video.id;
+    const { videos, favourites, isLoading, activeSection } = this.props;
+
+    const emptyMessage = activeSection === 'favourites'
+      ? 'You have not saved any videos. Search for some videos and click on the star icon.'
+      : 'You have not yet viewed any videos. First search for and view some videos.';
   
-          return (
-            <li className="video" key={id} onClick={()=>this.handlePressVideo(id)}>
-              <img src={videoContent.thumbnails.high.url} alt="" className="video__img" />
-              <div className="video__text">
-                <h2 className="video__title">{videoContent.title}</h2>
-              </div>
-              <button
-                onClick={(e) => this.handlePressSave(e, id)}
-                className="video__save"
-              >
-                {favourites.indexOf(id) > -1 ? (<IconStar/>) : (<IconStarEmpty/>)}
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+    if (videos.length) {
+      return (
+        <ul className={classNames('videos', { 'videos__loading': isLoading })}>
+          {videos.map((video, index) => {
+            const videoContent = video.snippet;
+            const id = video.id.videoId || video.id;
+    
+            return (
+              <li className={`video animate-fade-in-up animate-half-second animate-delay-${index}`} key={id + index} onClick={() => this.handlePressVideo(id)}>
+                <img src={videoContent.thumbnails.high.url} alt="" className="video__img" />
+                <div className="video__text">
+                  <h2 className="video__title">{videoContent.title}</h2>
+                </div>
+                <button
+                  onClick={(e) => this.handlePressSave(e, id)}
+                  className="video__save"
+                >
+                  {favourites.indexOf(id) > -1 ? (<IconStar />) : (<IconStarEmpty />)}
+                </button>
+              </li>
+            );
+          })}
+          {isLoading && <Loader />}
+        </ul>
+      );
+    }
+    return (
+      <p className="videos__empty animate-fade-in animate-half-second animate-delay-5" key={Math.random()}>
+        {activeSection !== 'search' && emptyMessage}
+      </p>
     );
   }
+
 }
 
 const mapStateToProps = (state) => ({
   videos: state.videos,
-  favourites: state.videoIds.favourites
+  favourites: state.videoIds.favourites,
+  isLoading: state.isLoading,
+  activeSection: state.activeSection
 });
 
 const mapDispatchToProps = {

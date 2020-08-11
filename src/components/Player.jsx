@@ -1,26 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import classNames from 'class-names';
 
 const Player = (props) => {
   const { playerId } = props;
-  if (playerId) {
-    return (
-      <div className="player__wrapper">
-        <div
-          className="player"
-          id="player"
-          type="text/html"
-        >
-          <iframe
-            title="player"
-            src={`https://www.youtube.com/embed/${playerId}`}
-            className="player__iframe"
-          />
-        </div>
+  return (
+    <div className="player__wrapper">
+      <div
+        className={classNames('player', {'player--visible': playerId})}
+        id="player"
+        type="text/html"
+      >
+        {playerId && <iframe
+          title="player"
+          src={`https://www.youtube.com/embed/${playerId}`}
+          className="player__iframe animate-fade-in"
+        />}
       </div>
-    );
-  }
-  return null;
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => ({
