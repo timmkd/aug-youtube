@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'class-names';
-import { throttle } from '../functions';
 
 class ScrollableContent extends Component {
   constructor(props) {
