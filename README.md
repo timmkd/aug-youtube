@@ -1,5 +1,20 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Tim's Notes
+
+Here is my attempt at task number 3. I would love to be able to work on it more but in the alloted time I feel this is a decent place to leave it.
+
+If I were continuing, considerations would be made to:
+
+- Avoid too many requests by caching the data
+- Make elements focusable for keyboard tabbing
+- Load video title below selected video
+- Add PropType validation and ESlint for such
+- Move api credentials to separate file for when API requests run out
+- Spend time fixing animation jumps when switching between sections
+
+# Create React App Notes:
+
 ## Available Scripts
 
 In the project directory, you can run:
