@@ -1,0 +1,32 @@
+.header {
+  font-size: 40px;
+  font-weight: 600;
+  text-align: center;
+  transition: .2s;
+  padding: 30px;
+  color: color(primary);
+
+  @media (min-width: breakpoint(md)){
+    font-size: 70px;
+    padding: 50px;
+  }
+
+  &--show-results {
+    font-size: 30px;
+    padding: 20px;
+    
+    @media (min-width: breakpoint(md)){
+      font-size: 70px;
+    }
+  }
+
+  &--player-visible {
+    font-size: 20px;
+    padding: 20px;
+    
+    @media (min-width: breakpoint(md)){
+      padding: 40px;
+      font-size: 30px;
+    }
+  }
+}

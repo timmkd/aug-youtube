@@ -1,0 +1,58 @@
+.video {
+  cursor: pointer;
+  margin: 0 0 45px;
+  position: relative;
+  overflow: hidden;
+  max-width: 1900px;
+
+  @media (min-width: breakpoint(md)){
+    width: 50%;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  @media (min-width: breakpoint(lg)){
+    width: calc(100% / 3);
+  }
+
+  @media (min-width: breakpoint(xl)){
+    width: calc(100% / 4);
+  }
+
+  @media (min-width: breakpoint(xxl)){
+    width: calc(100% / 5);
+  }
+
+  &__save {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: 0;
+    color: color(text);
+    cursor: pointer;
+
+    @media (min-width: breakpoint(md)){
+      right: 30px
+    }
+
+    &:focus {
+      outline: none;
+    }
+    
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  &__img {
+    margin: 0 auto 15px;
+    display: block;
+  }
+
+  &__title {
+    margin-bottom: 5px;
+  }
+
+}
